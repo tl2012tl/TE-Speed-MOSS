@@ -58,7 +58,7 @@ Model acceleration node, connected between `UNETLoader` and `KSampler`.
   - `te_predictor`: two-point secant, at most 1 consecutive prediction; suitable for 20–30 steps.
   - `te_predictor 2`: least-squares fit over the last 4 real outputs, 1–3 consecutive predictions; default; suitable for 40+ steps.
 - `reuse_threshold`: a step is skipped only when the relative latent change between steps is below this value; default `0.12`. Higher values skip more and change the image more.
-- `start_percent` / `end_percent`: prediction window, default `0.15` / `0.80`. The first and last steps are always evaluated in full.
+- `start_percent` / `end_percent`: prediction window, default `0.20` / `0.80`. The first and last steps are always evaluated in full.
 - `predictor_error_limit`: self-monitoring tolerance, default `0.06`. Lower is more conservative; higher is more aggressive.
 - `uncond_cache`: off by default. When enabled, the negative branch may predict on its own when the step decision is full; cond stays exact.
 - `verbose`: log the skip decision for every step.
@@ -70,7 +70,7 @@ Recommended defaults:
 attention          default
 step_cache         te_predictor 2
 reuse_threshold    0.12
-start_percent      0.15
+start_percent      0.20
 end_percent        0.80
 predictor_error_limit 0.06
 uncond_cache       false
@@ -145,7 +145,7 @@ vae/flux2-vae.safetensors
   - `te_predictor`：两点割线，最多连续预测 1 步，适合 20–30 步。
   - `te_predictor 2`：最近 4 个真实输出最小二乘拟合，连续预测 1–3 步，默认，适合 40 步以上。
 - `reuse_threshold`：latent 步间相对变化低于此值才允许跳过，默认 `0.12`。调大跳得更多，画面变化也更明显。
-- `start_percent` / `end_percent`：预测窗口，默认 `0.15` / `0.80`。首尾步始终完整评估。
+- `start_percent` / `end_percent`：预测窗口，默认 `0.20` / `0.80`。首尾步始终完整评估。
 - `predictor_error_limit`：自监控容差，默认 `0.06`。调小更保守，调大更激进。
 - `uncond_cache`：默认关闭。打开后负向分支可以在整步判定为完整时单独预测，cond 始终精确。
 - `verbose`：打印每一步的跳步判定。
@@ -157,7 +157,7 @@ vae/flux2-vae.safetensors
 attention          default
 step_cache         te_predictor 2
 reuse_threshold    0.12
-start_percent      0.15
+start_percent      0.20
 end_percent        0.80
 predictor_error_limit 0.06
 uncond_cache       false
